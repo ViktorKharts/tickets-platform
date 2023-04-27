@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("ONLINE_DABASE_URL")
+}
+
+model ticket_tier {
+  id                 String @unique @default(uuid())
+  service_fee        Int
+  buyer_price        Int
+  promoter_receives  Int
+}
+
+model platfrom_settings {
+  id                 Int @unique @default(1)
+  service_fee_rate   Int
+  minimum_fee        Int
+}
